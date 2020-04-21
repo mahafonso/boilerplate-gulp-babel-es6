@@ -1,0 +1,71 @@
+// ===============================================================
+/* FONTS */
+// ===============================================================
+$base-font: Raleway;
+$base-font-number: Roboto;
+$base-font-size: 16px;
+
+// ===============================================================
+/* COLORS */
+// ===============================================================
+$blue:       #2ab9b4; //normal
+$blue-d:     #1a9b98; //dark
+
+$green:      #188c6d; //normal
+
+$gray:       #f6f6f6; //normal
+$gray-d:     #e0e0e0; //dark
+$gray-l:     #fafafa; //light
+
+$purple:     #3e2656; //normal
+$purple-d:   #582c74; //dark
+$purple-l:   #bfbfd8; //light
+
+$red:        #bc2c3e; //normal
+
+$yellow:     #dbca39; //normal
+
+
+$txt-gray:   #828282; //normal
+$txt-gray-d: #4f4f4f; //dark
+$txt-gray-l: #ccc; //light
+
+$white: #fff; 
+
+// ===============================================================
+/* BACKGROUND */
+// ===============================================================
+$bg-blue:   $blue; //normal
+$bg-blue-d: $blue-d; //dark
+
+$bg-purple: $purple; //normal
+$bg-purple-d: $purple-d; //dark
+
+$bg-gray-l: $gray-l; //light
+
+// ===============================================================
+/* BREAKPOINTS */
+// ===============================================================
+$custom-small: 320px; //iphone retina
+$extra-small: 576px; //smartphone
+$small: 768px; //tablet
+// $medium: 992px; //desktop
+$medium: 1024px; //desktop
+// $large: 1200px; //wide
+$large: 1280px; //wide
+$extra-large: 1600px; //extra wide
+
+// ===============================================================
+/* Z-INDEX */
+// ===============================================================
+$z-00: 0;
+$z-10: 10;
+$z-20: 20;
+$z-30: 30;
+$z-40: 40;
+$z-50: 50;
+$z-60: 60;
+$z-70: 70;
+$z-80: 80;
+$z-90: 90;
+$z-100: 100;

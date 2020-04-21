@@ -1,0 +1,35 @@
+@mixin box($isDropdown: false) {
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .2);
+    padding: 20px;
+
+    @if $isDropdown {
+        position: relative;
+        z-index: $z-40;
+
+        &:before {
+            border: 6px solid #fff;
+            box-shadow: 1px -1px 1px -1px rgba(0, 0, 0, .23);
+            box-sizing: border-box;
+            content: '';
+            height: 0;
+            left: 50%;
+            position: absolute;
+            top: 2px;
+            transform: translateX(-50%) rotate(-45deg);
+            transform-origin: 0 0;
+            width: 0;
+        }
+
+        &:after {
+            background: transparent;
+            content: '';
+            height: 20px;
+            left: 0;
+            position: absolute;
+            top: -15px;
+            width: 100%;
+        }
+    }
+}

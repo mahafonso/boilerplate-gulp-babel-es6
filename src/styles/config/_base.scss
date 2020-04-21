@@ -1,0 +1,56 @@
+html,
+body {
+	-moz-font-smoothing: antialiased;
+	-webkit-font-smoothing: antialiased;
+	font-family: $base-font;
+	font-size: $base-font-size;
+	font-smooth: always;
+	height: 100%;
+	margin: 0;
+
+	&.overflow { overflow: hidden; }
+
+	p {
+		font-family: $base-font;
+		margin: 0;
+		padding: 0;
+	}
+
+	span { font-family: $base-font; }
+
+	a,
+	a:visited,
+	a:active,
+	a:link {
+        color: inherit;
+        display: inline-block;
+		font-family: $base-font;
+		text-decoration: none;
+	}
+
+	img {
+		display: block;
+		max-width: 100%;
+	}
+
+	ul,
+	li {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	fieldset {
+        border: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	&>iframe,
+	&>object { display: none; }
+
+	* {
+		box-sizing: border-box;
+		outline: none;
+	}
+}

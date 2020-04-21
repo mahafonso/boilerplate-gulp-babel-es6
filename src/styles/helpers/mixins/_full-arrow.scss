@@ -1,0 +1,9 @@
+/*
+$property: arrow direction
+$value: arrow size
+$color: arrow color
+*/
+@mixin fullArrow($property, $value, $color) {
+    border: $value solid transparent;
+    border-#{$property}: $value solid $color;
+  }

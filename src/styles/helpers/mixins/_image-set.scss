@@ -1,0 +1,10 @@
+/*
+$source1px: image source for 1px
+$source2px: image source for 2px
+*/
+@mixin imageSet($source1px, $source2px) {
+    background-image: -webkit-image-set( url($source1px) 1x, url($source2px) 2x);
+    background-image: -moz-image-set( url($source1px) 1x, url($source2px) 2x);
+    background-image: -o-image-set( url($source1px) 1x, url($source2px) 2x);
+    background-image: -ms-image-set( url($source1px) 1x, url($source2px) 2x);
+}

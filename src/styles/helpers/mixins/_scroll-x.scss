@@ -1,0 +1,7 @@
+@mixin scrollX() {
+	-webkit-overflow-scrolling: touch;
+	display: block;
+	overflow-x: auto;
+	overflow-y: hidden;
+	white-space: nowrap;
+}

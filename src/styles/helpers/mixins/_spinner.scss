@@ -1,0 +1,24 @@
+/*
+$background-color: spinner color
+$border-size: spinner diametter
+$color: spinner animation color
+$size: spinner size
+*/
+@mixin spinner($background-color, $border-size, $color, $size) {
+    animation: spin 2s linear infinite;
+    border: $border-size solid $background-color;
+    border-radius: 50%;
+    border-top: $border-size solid $color;
+    content: '';
+    height: $size;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: $size;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
