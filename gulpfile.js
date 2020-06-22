@@ -22,7 +22,7 @@ const paths = {
 
 gulp.task('html', function() {
     gulp.src(paths.html)
-        .pipe(gulp.dest('build/files'))
+        .pipe(gulp.dest('build'))
         .pipe(connect.reload());
 });
 
@@ -41,7 +41,7 @@ gulp.task('styles', () => {
             autoprefixer
         ] : []))
         .pipe(rename(file => file.basename = 'checkout6-custom.min'))
-        .pipe(gulp.dest('build/files'))
+        .pipe(gulp.dest('build/styles'))
         .pipe(browserSync.reload({stream: true}));
 });
 
@@ -64,13 +64,13 @@ gulp.task('scripts', () => {
                 minimize: util.env.production ? true : false,
             }
         }))
-        .pipe(gulp.dest('build/files'))
+        .pipe(gulp.dest('build/scripts'))
         .pipe(browserSync.reload({stream: true}));
 });
 
 gulp.task('connect', () => {
     connect.server({
-		root: 'src',
+		root: 'build',
 		open: false,
 		port: 8000,
 		livereload: true
