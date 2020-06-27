@@ -8,6 +8,7 @@ const gulp = require('gulp'),
     path = require('path'),
     autoprefixer = require('autoprefixer'),
     cssnano = require('cssnano'),
+    imagemin = require('gulp-imagemin'),
     webpack = require('webpack-stream'),
     browserSync = require('browser-sync'),
     util = require('gulp-util');
@@ -17,12 +18,15 @@ const paths = {
     scripts: 'src/scripts/**/*.js',
     webpack: 'src/scripts/*.js',
     styles: 'src/styles/**/*.scss',
-    sass: 'src/styles/*.scss'
+    sass: 'src/styles/*.scss',
+    images: './src/images/**/*',
+    fonts: './src/fonts/**/*'
 };
 
 gulp.task('html', function() {
-    gulp.src(paths.html)
+    return gulp.src(paths.html)
         .pipe(gulp.dest('build'))
+        .pipe(browserSync.reload({stream: true}))
         .pipe(connect.reload());
 });
 
@@ -40,7 +44,7 @@ gulp.task('styles', () => {
             cssnano,
             autoprefixer
         ] : []))
-        .pipe(rename(file => file.basename = 'checkout6-custom.min'))
+        .pipe(rename(file => file.basename = 'app.min'))
         .pipe(gulp.dest('build/styles'))
         .pipe(browserSync.reload({stream: true}));
 });
@@ -51,10 +55,10 @@ gulp.task('scripts', () => {
             presets: ['@babel/preset-env']
         }))
         .pipe(webpack({
-            entry: path.join(__dirname, 'src/scripts/checkout6-custom.js'),
+            entry: path.join(__dirname, 'src/scripts/app.js'),
             output: {
                 path: path.join(__dirname, 'build'),
-                filename: 'checkout6-custom.min.js',
+                filename: 'app.min.js',
             },
             resolve: {
                 modules: ['src/scripts', 'node_modules']
@@ -66,6 +70,17 @@ gulp.task('scripts', () => {
         }))
         .pipe(gulp.dest('build/scripts'))
         .pipe(browserSync.reload({stream: true}));
+});
+
+gulp.task('images', () => {
+    return gulp.src(paths.images)
+        .pipe(imagemin())
+        .pipe(gulp.dest('build/images'));
+});
+
+gulp.task('fonts', () => {
+    return gulp.src(paths.fonts)
+        .pipe(gulp.dest('build/fonts'));
 });
 
 gulp.task('connect', () => {
@@ -86,14 +101,15 @@ gulp.task('watch', () => {
     gulp.watch(paths.styles, gulp.series('html'));
     gulp.watch(paths.styles, gulp.series('styles'));
     gulp.watch(paths.scripts, gulp.series('scripts'));
+    gulp.watch(paths.images, gulp.series('images'));
+    gulp.watch(paths.images, gulp.series('fonts'));
 });
 
 gulp.task('clean', () => {
-    console.log('clean');
     return gulp.src('build', { read: true, allowEmpty: true })
         .pipe(clean());
 });
 
-gulp.task('deploy', gulp.parallel('styles', 'scripts'));
+gulp.task('deploy', gulp.parallel('html', 'styles', 'scripts', 'images', 'fonts'));
 
-gulp.task('default', gulp.series('clean', gulp.parallel('html', 'styles', 'scripts', 'connect', 'watch')));
+gulp.task('default', gulp.series('clean', gulp.parallel('html', 'styles', 'scripts', 'images', 'fonts', 'connect', 'watch')));
